@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>univerisity of rwanda - cybersecurity academy</title>
+        <link rel="icon"  href="img/download_IJp_icon" /> <!---display web icon on the header--> 
+
+<style>
+
+div
+.container {
+    width: 100%;
+    border: 1px solid gray;
+}
+
+header, footer {
+    padding: 1em;
+    color: white;
+    background-color: black;
+    clear: left;
+    text-align: center;
+}
+
+nav {
+    float: left;
+    max-width: 160px;
+    margin: 0;
+    padding: 1em;
+	position:fixed;
+	
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+			
+nav ul a {
+    text-decoration: none;
+}
+
+
+article {
+    margin-left: 170px;
+    border-left:2px solid gray;
+    padding: 20px;
+    overflow: hidden;
+	
+}
+
+</style>
+</head>
+<body>
+
+
+<header>
+   <h1>Univerisity of rwanda,<br>Cybersecurity Academy</h1>
+   
+</header>
+  
+<nav>
+    <ul>
+      <u><h3>CONTENTS</h3></u>
+    <li><a href="#linux/unix basic commands">linux/unix basic commands</a></li>
+    <li><a href="#shell scripting">shell scripting</a></li>
+    <li><a href="#managingfiles">managing files</a></li>
+    
+   
+  </ul>
+</nav>
+
+<article>
+    <p><a name="linux/unix basic commands">linux/unix basic commands</a></p>
+<p>
+<h1><u>linux/unix basic commands</u></h1>
+<ol type="a">
+<li> Recap of commands: mkdir, ls, pwd, touch, cat, head, tail, 
+        more, less, chmod, sort, ln </li>
+<li> Using grep and wc command</li>
+<li> Using Pipes and Redirectors in UNIX</li> 
+<li> Introduction vi Editor </li>
+</ol>
+<b><u>Exercise:</u></b>
+<ol type="1">
+<li> Create a Directory called SemesterII in /home/cg/root without changing current
+   working directory while you are in / </li>
+<li> Create 2 Sub Directories in SmesterII using one command and name them as: CS2List and
+    CS2CourseList</li>
+<li> Using one touch command create 2 text files in CS2List and CS2CourseList and name them:
+    StudentList.txt and CourseList.txt</li>
+<li> Using cat command append 5 lines of text in each file</li>
+<li>Using cat command display the content of 2 files and save result as All.txt in UNIX</li>
+<li> Create a soft link for StudentList.txt and CourseList.txt and save them in UNIX</li>
+<li> Using grep search the word "am" in StudentList.txt and CourseList.txt and display the 
+    reverse sorted list</li>
+<li> Under UNIX Direcory write one command which deletes all .txt files after a confirmation</li>
+<li> Create a Directory CSD and using one command copy StudentList.txt and CourseList.txt
+     in CSD</li>
+<li> In CSD rename CourseList.txt as CList.txt and change its permission to O:RW-, G: R--, O:R--</li></ol>
+
+<u>Answer:</u>
+
+<ol type="1">
+<li> mkdir /home/cg/root/SemesterII</li>
+<li> mkdir /home/cg/root/SemesterII/CS2List  /home/cg/root/SemesterII/CS2CourseList</li>
+<li> touch /home/cg/root/SemesterII/CS2List/StudentList.txt   /home/cg/root/SemesterII/CS2CourseList/CourseList.txt</li>
+<li>cat >>/home/cg/root/SemesterII/CS2List/StudentList.txt </li>
+Per Matias<br>
+Emma Ramos<br>
+Ket Kamali<br>
+Amoni Butare<br>
+Kamana Obelix<br>
+Ctrl+c<br>
+cat>>/home/cg/root/SemesterII/CS2CourseList/CourseList.txt<br>
+VB Programming<br>
+Java Programming<br>
+C++ Programming<br>
+Computer Networking<br>
+Probability<br>
+Ctrl+c<br>
+<li> mkdir UNIX</li>
+cat /home/cg/root/SemesterII/CS2List/StudentList.txt   /home/cg/root/SemesterII/CS2CourseList/CourseList.txt>/UNIX/All.txt<br>
+<li> ln -s /home/cg/root/SemesterII/CS2List/StudentList.txt   /UNIX/SLink.txt<br>
+ln -s /home/cg/root/SemesterII/CS2CourseList/CourseList.txt   /UNIX/CLink.txt</li>
+<li> grep "am" /home/cg/root/SemesterII/CS2List/StudentList.txt  /home/cg/root/SemesterII/CS2CourseList/CourseList.txt | sort -nr</li>
+<li> rm -i /UNIX/*.txt</li>
+<li> mkdir CSD<br>
+cp /home/cg/root/SemesterII/CS2List/StudentList.txt CSD/  /home/cg/root/SemesterII/CS2CourseList/CourseList.txt  CSD/</li>
+<li> mv CSD/CourseList.txt  CSD/CList.txt<br>
+chmod  644 CSD/CList.txt</li></ol>
+
+<h2>Vi text editor</h2>
+<h3>starting vi</h3>
+
+<dl>
+  <dt><b>Open a file with vi. Type: vi myfile.txt</b></dt>
+  <dd>- If<b> myfile.txt </b>does not exist, a screen will appear with just a cursor at the top followed by tildes (~) in the first column.</dd>
+  <dd>-If myfile.txt does exist, the first few line of the file will appear.</dd>
+  <dd>-The status line at the bottom of your screen shows error messages and provides information and feedback, including the name of the file.</dd>
+ <h3>vi Modes</h3>
+<dt><b>Command Mode</b></dt>
+
+<dd>-Command mode is the mode you are in when you start (default mode)</dd>
+<dd>-Command mode is the mode in which commands are given to move around in the file, to make changes, and to leave the file</dd>
+<dd>-Commands are case sensitive: j not the same as J</dd>
+<dd>-Most commands do not appear on the screen as you type them. Some commands will appear on the last line: : / ?</dd>
+<dt><b>Insert (or Text) Mode</b></dt>
+
+<dd>The mode in which text is created. (You must press <Return> at the end of each line unless you've set wrap margin.)</dd>
+<dd>There is more than one way to get into insert mode but only one way to leave: return to command mode by pressing <Esc></dd>
+<dd>When in doubt about which mode you are in, press <Esc></dd>
+<dt><b>Basic cursor movement</b></dt>
+<dd> 
+  
+  <i><b>  k  &nbsp;&nbsp; </b> Up one line</i></dd>
+  
+   <dd><i><b> j &nbsp;&nbsp; </b>   Down one line</i></dd>
+  
+   <dd><i><b> h &nbsp;&nbsp;</b>   Left one character</i></dd>
+  
+   <dd><i><b> l  &nbsp;&nbsp;</b>  Right one character (or use <Spacebar>)</i></dd>
+  
+   <dd><i><b> w  &nbsp;&nbsp; </b> Right one word</i></dd>
+  
+   <dd> <i><b>b  &nbsp;&nbsp; </b> Left one word</i></dd>
+   <h3>Entering, Deleting, and Changing Text</h3>
+
+    <dt>From Command Mode</dt>
+  
+   <dd><i><b> i &nbsp;&nbsp;</b>    Enter text entry mode</i></dd>
+  
+    <dd><i><b>x  &nbsp;&nbsp; </b>  Delete a character</i></dd>
+  
+   <dd><i><b> dd &nbsp;&nbsp;</b>   Delete a line</i></dd>
+  
+   <dd><i><b> r &nbsp;&nbsp; </b>  Replace a character</i></dd>
+  
+   <dd><i><b> R &nbsp;&nbsp;  </b> Overwrite text, press <Esc> to end</i></dd>
+
+</dl>
+<b><u>
+Exercise:</u></b>
+<ol>
+<li> Create a Directory CS in your current working dirctory</li>
+<li> Using vi editor create a file called File1.txt and put in it 5 text lines and save it under CS and quit</li>
+<li> Use vi command to copy and paste 5 lines, replace one word of your choice by "Happy" then save
+   and quit</li>
+<li> use cat command to display the content of File1.txt</li>
+<li> Delete last 3 lines using vi command then save and quit</li>
+
+<b><u>
+Quiz:
+</u></b>
+<dl><dt><b>Suppose that you are in /home</b></dt>
+<dd>-(a) create a directory in /home/Student  &nbsp;&nbsp; (1 Mark)</dd><br>
+<b>Answer:</b> mkdir /home/Student
+<dd>-(b) using one command create 2 subdirectories names CS2 and Quiz    
+   under Student.&nbsp;&nbsp; (1 Mark)</dd><br>
+<b>Answer:</b> mkdir /home/Student/CS2   /home/Student/Quiz or mkdir Student/CS2 Student/Quiz
+<dd>-(c)using one command create 1 text file named List.txt in CS2 and 1 text file named
+    Questions.txt in Quiz.&nbsp;&nbsp; (2 Marks)</dd><br>
+<b>Answer:</b> touch /home/Student/CS2/List.txt  /home/Student/Quiz/Questions.txt
+
+ <dd>-(d) suppose that files: File1.txt, File2.txt, File.txt, MyFile1.txt are found in 
+       Student directory, write 1 commad to delete them after confirmation. &nbsp;&nbsp;(1 Mark)</dd><br>
+  <b>Answer:</b>  rm -i /home/Student/*.txt
+ <dd>(e) suppose that List.txt and Questions.txt have some lines of text, 
+     write a  command to display the content from both files and save result as 
+     All.txt in root directory. &nbsp;&nbsp;(2 Marks)</dd><br>
+<b>Answer:</b> cat /home/Student/CS2/List.txt  /home/Student/Quiz/Questions.txt>/All.txt
+<dd>(f) Open All.txt using vi command and delete 6 lines of text in it then save and quit.&nbsp;&nbsp; (3 Marks)</dd><br>
+ Answer:
+<br>vi  /All.txt
+<br>6dd
+:wq
+<br>
+</p>
+<!-----------------Second paragraph-------------------------------------------------->
+<p><a id="shell scripting">shell scripting</a></p>
+<p >
+<b><u>Shell Scripting</u></b><br>
+
+-> Shell is a UNIX Command Interpretor <br>
+-> There are many versions of Shell but commone ones are: SH-> Shell
+    CSH-> C Shell, BASH-> Born Again Shell, TSH-> Extended C Shell<br>
+-> Shell Scripting is about writing a script which contains a list of commands
+    that will be executed by Shell Interpretor.
+	<br>
+<h2><u>Writing Shell Script:</u></h2>
+-> We use editor like vi to write code<br>
+-> Each Shell script start with the line: #!/bin/sh<br>
+-> The Symbol # means the line is a comment but Symbol ! means next lines are
+    are special and need be intepreted by shell.<br>
+-> No Data types and variable declaration are used <br>
+-> To display we use echo<br>
+-> To access variable value we put dollar symbol($) in front of variable name<br>
+-> After writing your script you change file permission to give execute previlege<br>
+-> To run your script we use: ./FileName<br>
+
+<h3><u>Example: Write a shell script that displays Hello IT Students</u></h3>
+<u><b>Answer:</b></u>
+
+#!/bin/sh<br>
+hello="Hello IT Students"<br>
+echo $hello<br>
+echo "IT Students like LUNIX"<br>
+
+<u><b>Example2:</b></u><br>
+
+#!/bin/sh<br>
+a=5<br>
+b=10<br>
+c=` expr $a + $b <br>`
+echo "Sum= $c"  <br>
+
+<u>Example3:</u><br>
+
+#!/bin/sh<br>
+echo "Enter Number 1:"<br>
+read a<br>
+echo "Enter Number 2:"<br>
+read b<br>
+c=` expr $a + $b `<br>
+echo "$a + $b =$c"<br>
+
+<b><u>BonusEx:</u></b>
+Write a Shell Script which prompts user to FirstName, LastName and Age<br>
+then displays:<br>
+Hello FirstName  LastName<br>
+You are Age Years Old<br>
+<b>Welcome FirstName to UNIX Programming</b><br>
+<b><u>Answer:</u></b><br>
+#!/bin/sh<br>
+echo "Enter First Name:"<br>
+read first<br>
+echo "Enter Last Name:"<br>
+read last<br>
+echo "Enter Your Age:"<br>
+read age<br>
+echo "Hello $first  $last"<br>
+echo " You are $age Years Old"<br>
+echo "Welcome $first to UNIX Programming"<br>
+<b><u>if else statements in Shell  Scripting</u></b>
+<b>Format:</b><br>
+if [ Condition ]<br>
+then<br>
+Statements<br>
+else<br>
+Statements<br>
+fi<br>
+<b>Example: Write a Shell Script which prompts user to enter 2 numbers a and b, if a
+it displays their sum, other it displays their difference a-b.</b><br>
+<b><u>Answer:</u></b><br>
+
+#!/bin/sh<br>
+echo "Enter Number 1:"<br>
+read &nbsp; a<br>
+echo "Enter Number 2:"<br>
+read &nbsp; b
+if [ $a -lt $b ]<br>
+then<br>
+c=`expr $a + $b `<br>
+echo "Sum=$c"<br>
+else<br>
+c=` expr $a - $b `<br>
+echo $c<br>
+fi<br>
+</p>
+<p class="">
+<ul type="circle">
+<li> Exercise on If else Control Statement</li>
+<li> For Loop</li>
+<li> Exercise on for loop</li></ul>
+<b><u> Exercise</u></b>
+<dl>
+<dt>Question1: Suppose that File1.txt and File2.txt are located in /usr/Files and your  current working Directory                   is /home/Peter, write UNIX commands to do the following:</dt>
+                 <dd>(a) Use one command to display content of File1.txt and File2.txt and save the sorted content in                  a new File called MyFile.txt in your current working directory </dd> 
+                 <dd>(b) Create a soft link of MyFile.txt in /home directory </dd>
+                 <dd>(c) Use one command to delete all files with .txt in /usr/Files</dd> 
+
+<dt>Question2: Write a shell script which prompts user to enter a number N, if N is less than or equal to 5, your                    script creates 2 Directory CS and IT in /home using one      command, otherwise it creates 3     directories CS, IT and IS in /home/Peter.</dt> </dl>
+<b><u>Answer 2:</u></b><br>
+
+#!/bin/sh<br>
+echo "Enter a Number"<br>
+read n<br>
+if [ $n -le 5 ]<br>
+then<br>
+mkdir /home/CS  /home/IT<br>
+else<br>
+mkdir /home/Peter/CS  /home/Peter/IT   /home/Peter/IS<br>
+fi<br>
+<b>For loop in Shell Scripting</b><br>
+<b>Format:</b>
+<br>for variable in  Range<br>
+do<br>
+statements<br>
+done<br>
+<b>Example1:</b><br>
+#!/bin/sh<br>
+for i in  ` seq 1 10 `<br>
+do<br>
+echo "$i. Hello IT 2 Students"<br>
+done<br>
+<b>Exercise:</b><br>
+<dt>Write a shell script which uses for loop to create 5 text files such as file1.txt up to file5.txt
+and after creating 4th file the program creates a directory in /home</dt>
+<b><u>Answer:</u></b><br>
+
+#!/bin/sh<br>
+for i in 1 2 3 4 5<br>
+do<br>
+if [ $i -eq 4 ]<br>
+then<br>
+mkdir /home/CS<br>
+touch file$i.txt<br>
+else<br>
+touch file$i.txt<br>
+fi<br>
+done<br>
+<h2>Exercise2:</h2><br>
+---------------
+Write a shell script which prompts user to enter a number N, if N is less than or equal to 5<br>
+the program creates N directories such as MyDir1, MyDir2,... otherwise it creates N Files starting<br>
+with File1.doc, ...., FileN.doc<br>
+NB: Files or Directories are created in your current working directory.<br>
+<b><u>Answer:</u></b><br>
+#!/bin/sh<br>
+echo "Enter a Number:"<br>
+read N<br>
+if [ $N -le 5 ]<br>
+then<br>
+for i in `seq  1 $N <br>`
+do<br>
+mkdir MyDir$i<br>
+done<br>
+else<br>
+for i in `seq 1 $N `<br>
+do <br>
+touch File$i.doc<br>
+done<br>
+fi<br>
+while loop<br>
+<b><u>Format</u></b><br>
+Initialization<br>
+while [condition]<br>
+do<br>
+statement<br>
+Increment/Decrement<br>
+done<br>
+Example:<br>
+#!/bin/sh<br>
+a=1<br>
+while [ $a -le 10 ]<br>
+do<br>
+echo "$a. I like Shell Scripting"<br>
+a=`expr $a +1 `<br>
+done<br>
+or<br> 
+#!/bin/sh<br>
+a=10<br>
+while [ $a -ge 1 ]<br>
+do<br>
+c=` expr 11 - $a `<br>
+echo "$c. I like Shell Scripting"<br>
+a=`expr $a - 1 <br>`
+done</br>
+</p>
+<p><a id='managingfiles'>managing files</a></p>
+<p>
+<ul type="disc">
+<li> Introduction to UNIX Operating System</li>
+<li> Basic UNIX Commands for managing files and directories</li>
+<li> Using cat command</li>
+<dl>
+<dt>1.LUNIX Operating System</dt>
+<dd>-> LUNIX is a command line operating system</dd>
+<dd>-> LUNIX is multi-user and multi-task operating system</dd>
+<dd>-> LUNIX was created in Bell Lab</dd>
+<dd>-> LUNIX has given birth of UNIX Like operating systems which are open source and support
+    command line and Graphical User Intrface(GUI)  interfaces such as FreeBSD, Linux, 
+     Ubuntu, Fedora, RedHat,...</dd>
+<dd>-> LUNIX has super user called root and is represented by /</dd>
+<dd>-> LUNIX like other operating system, manages hardware, applications and users</dd>
+<dd>-> LUNIX stores data in files and files are stored in directories</dd>
+<dd>-> LUNIX has a command interpretor called Shell</dd>
+<dt>1.1 Managing Files and Directories</dt>
+<dt>Commands: mkdir, rmdir, rm, touch, cp, mv,ls, pwd, cd</dt>
+<dd>-> mkdir: make directory it is used to create a new directory</dd>
+<dd>->rmdir: remove directory and is used to remove empty directory</dd>
+<dd>-> rm: remove, used to delete a file</dd>
+<dd>-> rm -r: remove a directory and its content</dd>
+<dd>->touch: is used to create empty file</dd>
+<dd>-> cp: copy files from one location to another</dd>
+<dd>->mv: rename a file</dd>
+<dd>->ls: used to list the content of a directory</dd>
+<td>->pwd: shows your current working directory</td>
+<dd>->cd: change directory</dd>
+While you remain in your working directory create the following directories:<br>
+
+UR<br>
+UR/CST<br>
+UR/CST/IT<br>
+UR/CST/CS<br>
+UR/CST/IS<br>
+<dt>Answer:</dt>
+<dd>mkdir UR</dd>
+<dd>mkdir UR/CST</dd>
+<dd>mkdir UR/CST/IT CS IS</dd>
+<dt>cat command</dt>
+<dd>-> cat is used for different tasks:</dd>
+<dt><b>example:</b> cat MyFile.txt</dt>
+<dd>=>this will display the content of the file called MyFile.txt, if it exists</dd>
+<dd>cat >> File1.txt</dd>
+<dd>=> This will append new content at the end of file called File1.txt</dd>
+<dd>cat  > NewFile.dat</dd>
+<dt>=> This will create a new file called NewFile.dat and allow you to add text</dt>
+<dd>cat FileName</dd>
+<dd>cat>FileName</dd>
+<dd>cat>>FileName</dd>
+<dt>BonusEx: Remaining in your current working dorectory do the following:</dt>
+<dd>(a) Create a Directory and name it Country</dd>
+<dd>(b) Under Country create Rwanda and Uganda using one command</dd>
+<dd>(c) Under Rwanda create a text file called Citizen.txt and add 3 names</dd>
+<dd>(d) Copy Citizen.txt to Uganda</dd>
+<dt>Answer:</dt>
+
+
+<dd>mkdir Country</dd>
+<dd>mkdir Country/Rwanda  Country/Uganda</dd>
+<dd>cat>Country/Rwanda/Citizen.txt</dd><br>
+John<br>
+Peter<br>
+Barack<br>
+Ctrl+d<br>
+<dd>cp Country/Rwanda/Citizen.txt  Country/Uganda/</dd>
+<dt>Quiz1:</dt>
+<dt>Without changing your current working directory do the following tasks:</dt>
+<dd>(a) create 3 directories and name them as MyDir1, MyDir2 and MyDir3 using one command</dd>
+<dd>(b) using one touch command create File1.txt in MyDir1, File2.txt in MyDir2 and File3.txt in MyDir3</dd>
+<dd>(c) append 2 text lines in each text file</dd>
+<dd>(d) use one command to display the content from 3 text files and save results in MyFile.txt in
+    your current working directory</dd>
+<dd>(e) rename MyFile.txt  to Content.txt</dd>
+<dd>(f) copy Content.txt to all 3 directories using one command</dd>
+<dt>Answer:</dt>
+<dd>(a) mkdir &nbsp; MyDir1 &nbsp;  MyDir2 &nbsp;  MyDir3</dd>
+<dd>(b) touch MyDir1/File1.txt  MyDir2/File2.txt   MyDir3/File3.txt</dd>
+<dt>(c) cat >>MyDir1/File1.txt</dt>
+   <dd>1. UNIX is good</dd>
+  <dd> 2. I like Computer Science</dd>
+Ctrl+d
+<dt>cat >>MyDir2/File2.txt</dt>
+  <dd>3. NPC is the best college</dd>
+  <dd>4. Musanze has a good climate</dd>
+Ctrl+d
+<dt>cat >>MyDir3/File3.txt</dt>
+  <dd>5. UR is on top of Higher Learning Institutions in Rwanda</dd>
+  <dd>6. I will become a good programmer</dd>
+Ctrl+d
+<dd>(d) cat MyDir1/File1.txt &nbsp;  MyDir2/File2.txt &nbsp;  MyDir3/File3.txt >&nbsp;MyFile.txt</dd>
+<dd>(e) mv  MyFile.txt  Content.txt</dd>
+<dd>(f) cp Content.txt &nbsp;  MyDir1/ &nbsp;  MyDir2/ &nbsp; MyDir3/</dd>
+
+<dt>Commands: ln, grep, head, tail, sort, chmod</dt>
+<dd>->ln: is used to create a link to your file (like shortcut)</dd>
+<dd>=> There are 2 kinds of link: soft link and hard link</dd>
+<dd>=> hard link is created without option and a link can be accessed after original file was deleted</dd>
+<dd>=> soft link is created using ln -s, content of a link is lost after original file is deleted</dd>
+Format: ln -s FileName   LinkName
+<dd>->grep is used to search in a file</dd>
+<dd>Format: grep "Word to search"  FileName</dd>
+<dd>-> head: is used to display first lines. Example: head -5 MyFile.txt =>displays first 5 lines of text from  MyFile.txt</dd>
+<dd>->Tail: displays last lines. Example: tail -3 MyFile.txt=>displays last 3 lines from MyFile.txt</dd>
+<dd>->sort: is used to sort the content. Example: cat MyFile.txt | sort -nr =>displays a reverse sorted list</dd>
+<dd>-> chmod: means change mode: used to change file permissions for users:</dd>
+<dd>In UNIX we have 3 kind of users: Owner, Group and Others and 3 access rights: read, write, execute.</dd>
+<dt>=> There are 3 alternatives for each user: 111(or rwx)= 7=>means full access</dt>
+<dd>r-xr--r-x=545</dd>
+<dd>rw-rw----=660</dd>
+<dd>rwxr--r--=744</dd>
+<dd>111=7=>rwx</dd>
+<dd>100=4=>r--</dd>
+<dd>110=6=>rw-</dd>
+<dd>101=5=>r-x</dd>
+<dd>011=3=>-wx</dd>
+<dd>001=1=>--x</dd>
+
+<dt>Exercise:</dt>
+<dd>(a) create 2 directories in Your Current working Directory and name them as NPC and RNP using one command.</dd>
+<dd>(b) using cd command go to RNP and create 2 text files suchas File1.txt in RNP and
+    <dd>File2.txt in NPC using one command.</dd></dd>
+<dd>(c) append 4 text lines in each file</dd>
+<dd>(d) change permission to rwxr-xr-- for the 2 files</dd>
+<dd>(e) display the content of 2 files and save result in Muhoza.txt in your
+     current working directory</dd>
+<dd>(f) use grep command to find lines that contain the word: Musanze</dd>
+<dt>Answer:</dt>
+<dd>(a) mkdir &nbsp;NPC  &nbsp; RNP</dd>
+<dd>(b) cd RNP</dd>
+<dt>touch File1.txt  NPC/File2.txt</dt>
+<dt>(c) cat>>File1.txt</dt>
+<dd>1. Muhoza Sector is in Musanze District</dd>
+<dd>2. NPC is found in Musanze</dd>
+<dd>3. Musanze Campus is good</dd>
+<dd>4. UR is the best</dd>
+Ctrl+d
+<dt>cat>>NPC/File2.txt</dt>
+<dd>5. I like working in UNIX</dd>
+<dd>6. UNIX is Multi-user and Multi-task  OS</dd>
+<dd>7. I am eager to learn Programming under UNIX</dd>
+<dd>8. Programming requires more thinking</dd>
+Ctrl+d
+<dd>(d) chmod 754 File1.txt</dd>
+     chmod 754 NPC/File2.txt
+<dd>(e) cat File1.txt  NPC/File2.txt >Muhoza.txt</dd>
+<dd>(f) grep "Musanze"  Muhoza.txt</dd>
+<dd>head -5 Muhoza.txt</dd>
+<dd>tail -3 Muhoza.txt</dd>
+<dt>Pipe:  |</dt>
+<dd>=> The pipe is used to concatenate commands</dd>
+<dt>examples:</dt>
+<dd>cat Muhoza.txt | head -4 | sort -nr | grep "Musanze"</dd>
+<dd>this will seach the text lines containing Musanze from first 4 lines sorted in
+descending order.</dd>
+<dd>head n-3 Muhoza.txt | tail n-3 Muhoza.txt</dd>
+<dd>this will display the full content of Muhoza.txt</dd>
+<dt>Commands: more, less, wc, whoami, 
+wc: word count command used to get details on file size, number of words and number of lines.</dt>
+<dt>Example: </dt>
+<dd>wc Muhoza.txt</dd>
+<dd>wc -w Muhoza.txt</dd>
+<dt>this displays the number of word that makes Muhoza.txt</dt>
+<dd>wc -l -m Muhoza.txt</dd>
+<dt>displays the number of lines and the number of characters of Muhoza.txt</dt>
+<dd>head -3 Muhoza.txt | wc -w</dd>
+<dt>displays the number of words for the first 3 lines of Muhoza.txt</dt>
+<dd>ls -1 | wc -l </dd>
+this will diplays the number of files in your current working directory
+<dt>Use of Wildcard in UNIX:</dt>
+<dd>*: no thing or more</dd>
+<dd>?: anything</dd>
+<dd>[ ]: range</dd>
+<dd>[0-9]: contain any number from 0 to 9</dd>
+<dd>[a-z]: contain any small letter from a to z</dd>
+<dd>[A-Z]: contain any upper case letter from A to Z</dd>
+<dt>Examples:</dt>
+<dd>ls *.txt</dd>
+<dd>this list all files that ends with .txt</dd>
+<dd>ls *.??t</dd>
+<dd>this displays all files that ends with 3 characters after dot and the last character is t
+ls [0-9]*</dd>
+<dd>list all files and directories that start with a number.</dd>
+<dt>Exercise</dt>
+<dd>(a) create 2 Files with .dat, 2 Files with .c, 2 Files with .txt , 1 Files starting with a number,
+        1 File ending with a number using one touch command.</dd>
+<dd>(b) count the number of files in your current working directory</dd>
+<dd>(c) using ls command display the list of files starting with a number and a letter between
+      A-K after a number.</dd>
+<dd>(d) using ls display all files with extension starting with letter which is not between: m-t</dd>
+<dd>(e) using ls display all files has extension of one letter.</dd>
+<dd>(f) using cat command display the content of all files with .txt in your current working directory and save result as MyFile.sh</dd>
+<dt>Answer:</dt>
+<dd>(a) touch  &nbsp;File.dat &nbsp; MyFile.dat &nbsp; FileProg.c MyProg.c &nbsp; File1.txt &nbsp; File2.txt &nbsp; 2ndYear.txt  1Exercise1.ppt</dd>
+<dd>(b) ls -1 | wc -l</dd>
+<dd>(c) ls [0-9][A-K]*</dd>
+<dd>(d) ls *.[^m-t]  *.[^m-t]??</dd>
+<dd>(e) ls *.?</dd>
+<dd>(f) cat  *.txt>MyFile.sh</dd>
+<dd>(e) ls *.?</dd>
+<dd>(f) cat *.txt>MyFile.sh</dd>
+rm *.txt  *.dat  *.c
+this removes all files with extensions: .dat, .txt and .c<br>
+<b>Introduction to vi editor</b>
+<dd>->An editor allows us to type text or program code and allows us to manipulate the content</dd>
+<dd>-> vi is a UNIX editor which is supported by all UNIX versions</dd>
+<dt>-> vi editor has 3 operating modes:</dt>
+<dd>1. Command mode </dd>
+<dd>2. Insert mode</dd>
+<dd>3. Last Line mode</dd>
+<dt>changing vi modes:</dt>
+<dd>-> by default after entering in vi editor we are in command mode</dd>
+<dd>To go to Insert mode from command mode we press i</dd>
+<dd>To go command mode from Insert mode we press esc key</dd>
+<dd>To go to last line from command mode we use colon(:)</dd>
+<dd>To go to last line mode from Insert mode, first we go to command mode then we press :</dd>
+<dt>Manipulating content</dt>
+<dd>>Moving mouse cursor:
+<dd>top-down: we use letter j</dd>
+<dd>bottom-up: we use letter k</dd>
+<dd>left-right: we use letter l</dd>
+<dd>right-left: we use letter h</dd></dd>
+<dt>copy and paste:</dt>
+<dd>to copy one line we use: yy</dd>
+<dd>to copy 5 lines we use: 5yy</dd>
+<dd>to paste we use: p</dd>
+<dt>deleting in a file:</dt>
+<dd>to delete one character we use: x</dd>
+<dd>to delete a word we use: dw</dd>
+<dd>to delete a line we use: dd</dd>
+<dd>to delete 10 lines we use: 10dd</dd>
+<dt><strong>NB: to manipulate the content of a file created using vi we must be in command mode.</strong></dt>
+<dd> => to save and quit we use :wq</dd>
+<dd>=>to save and remain we use :w</dd>
+<dd>=> to quit without saving we :q</dd>
+<dt>Quiz:</dt>
+<dd>Assume that your current working directory is: /home/CS and these files are in /home/CST:  File1.txt, 1Quiz.txt, File2.c, CS2UNIX.sh, CS3Network.doc, CS2List.dat, File3.c, Web2.html</dd>
+<dt>Answer the following questions: (1) Using cat command display the content of files with .txt and save the result in a sorted file with descending order as MyQuiz.txt in your current working directory.</dt>
+<dd>(2) Using head and tail together with pipe display all text lines of MyQuiz.txt containing the word: UNIX</dd>
+<dd>(3) Using ls and wc command display the number of files found in /home/CST</dd>
+<dd>(4) Using ls command and wildcard display all files that start with a number and end with extension of one letter or four letters.</dd>
+<dd>(5) Write a command to delete all files that have extension which do not start with a letter t and is a 3 letter extension.</dd>
+<dd>(6) Suppose that you open MyQuiz.txt using vi editor, write a command to copy 5 lines, to delete 10 lines, save and quit</dd>
+ 
+</dl>
+</p>
+</article>
+
+<footer>Copyright © by theos@ univerisity of rwanda cybersecurity academy</footer>
+
+</div>
+
+</body>
